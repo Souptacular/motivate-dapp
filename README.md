@@ -24,4 +24,5 @@ Example: Nick has a goal to write a novel. He needs to write 500 words a day for
 
 ## Contact Us
 Hudson (Souptacular) - [HudsonJameson.com](http://hudsonjameson.com/)
+
 Tjaden (tjade273) -  [tjade273@gmail.com](mailto:tjade273@gmail.com)
