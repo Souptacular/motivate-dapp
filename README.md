@@ -5,9 +5,9 @@
 Motivate is a decentralized platform that empowers users to accomplish their goals using smart contracts and Ethereum. You choose a goal, set up incentives, and the blockchain will keep you on track. 
 
 Here’s What Make Motivate Unique:
-Compelling: Unlike other apps that are easy to ignore when the going gets tough, Motivate provides strong incentives to help you stick with your goals.
-Transparency: Your friends and supporters can keep an eye on your project by viewing the tamper-proof Ethereum public blockchain with our easy to use interface.
-Flexibility: Templates provide anyone with the ability to create their own goals and incentives that fit their needs.
+* **Compelling**: Unlike other apps that are easy to ignore when the going gets tough, Motivate provides strong incentives to help you stick with your goals.
+* **Transparent**: Your friends and supporters can keep an eye on your project by viewing the tamper-proof Ethereum public blockchain with our easy to use interface.
+* **Flexibile**: Templates provide anyone with the ability to create their own goals and incentives that fit their needs.
 Hassle Free To Use: No need to attach your e-mail, create a password, or provide your identity.
 
 Apps like [LoseIt](https://www.loseit.com/) are easy to ignore and highly specialized. Motivate gives you the power to accomplish your goals, your way.
