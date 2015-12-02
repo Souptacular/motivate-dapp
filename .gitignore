@@ -19,4 +19,5 @@ public/node_modules
 .npm
 # Optional REPL history
 .node_repl_history
-
+#Bower components for client facing app
+bower_components
