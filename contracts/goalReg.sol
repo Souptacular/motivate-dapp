@@ -17,6 +17,10 @@ contract goalReg {
     }
     
     function addGoal() public returns (bool){
+        if(msg.sender != motivate || ){
+            throw;
+        }
+        
         
     }
     
