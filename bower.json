@@ -1,0 +1,13 @@
+{
+  "name": "motivate-dapp",
+  "description": "Frontend lib",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.4.0",
+    "angular-route": "~1.4.0"
+  },
+  "devDependencies": {
+    "angular-bootstrap": "~0.14.3"
+  }
+}
