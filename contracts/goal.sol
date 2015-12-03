@@ -22,12 +22,7 @@ contract Goal{
         remove(index);
     }
     
-    function remove(uint index){ //Remove task while maintaining sort order
-        delete current_tasks[index];
-        for(uint i=index+1, i < current_tasks.length, i++){
-            current_tasks[i-1]=current_tasks[i];
-        }
-    }
+
     
     
     function checkFunding() returns (bool){ //Goal only begins once contract is funded
