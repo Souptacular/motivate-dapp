@@ -1,6 +1,8 @@
 # Motivate Ethereum DApp
 # We will be coding Motivate LIVE Dec. 1st - Dec. 6th for the Ether.Camp Hackathon. Links will be provided soon.
 
+[![Join the chat at https://gitter.im/Souptacular/motivate-dapp](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Souptacular/motivate-dapp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## About
 Motivate is a decentralized platform that empowers users to accomplish their goals using smart contracts and Ethereum. You choose a goal, set up incentives, and the blockchain will keep you on track. 
 
