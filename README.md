@@ -28,3 +28,5 @@ Example: Nick has a goal to write a novel. He needs to write 500 words a day for
 Hudson (Souptacular) - [HudsonJameson.com](http://hudsonjameson.com/)
 
 Tjaden (tjade273) -  [tjade273@gmail.com](mailto:tjade273@gmail.com)
+
+Richard (richardlin) -  [ricardxlin@gmail.com](mailto:ricardxlin@gmail.com)

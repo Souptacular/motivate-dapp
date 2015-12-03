@@ -8,6 +8,7 @@
     "angular-route": "~1.4.0"
   },
   "devDependencies": {
-    "angular-bootstrap": "~0.14.3"
+    "angular-bootstrap": "~0.14.3",
+    "bootstrap": "~3.3.6"
   }
 }
