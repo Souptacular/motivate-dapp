@@ -16,7 +16,7 @@ bower install
 
 ### Local hosting
 ```
-Run in app/
+Run in mototivate-dapp/
 http-serve
 ```
 
