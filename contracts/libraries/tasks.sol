@@ -1,5 +1,5 @@
 // Library for operations on tasks
-
+//TODO: USe "self" for method-like calls. Use "storage" keyword for library calls
 contract Validator{ //Abstract contract defining validator ABI
     function validate(uint taskID, bytes data) returns (bool val);
 }
@@ -9,7 +9,7 @@ library Tasks {
         address user;
         uint taskID;
         byte[] ipfsData; //note: ipfs uses arbitrary-length addresses
-        uint statTime;
+        uint startTime;
         uint duration;
         address validator;
         uint penalty; //penalty for not completing, denominated in whatever token the Goal uses
@@ -25,28 +25,27 @@ library Tasks {
         Tasks.Task[] tasks; //Sorted in order of due date
     }
     
-    function validate(Task task, bytes validationData) returns (bool){
-        if(block.timestamp > task.startTime && (block.timestamp < task.endTime){
-            return  Validator(task.validator).validate(task.taskID, validationData);
+    function validate(Task storage self, bytes validationData) returns (bool){
+        if(block.timestamp > self.startTime && block.timestamp < self.startTime + self.duration){
+            return  Validator(self.validator).validate(self.taskID, validationData);
         }
         return false;
     }
     
-    function complete(Task[] tasks, uint index, bytes validationData) returns (uint reward){ //validate, re-add, and return reward amount
-        uint reward;
-        uint penalty = clean(tasks);
-        if(validate(task, validationData)){
-            reward += tasks[index].reward;
-            remove(tasks, index);
+    function complete(taskList storage self, uint ID, bytes validationData) returns (uint reward){ //validate, re-add, and return reward amount
+        uint penalty = clean(self);
+        uint index = findID(self,ID);
+        if(validate(self.tasks[index], validationData)){
+            reward += self.tasks[index].reward;
+            remove(self, index);
         }
     }
 
     
-    function remove(taskList list, uint index){ //Remove task while maintaining sort order
-        Task task = list.tasks[index];
-        list.tasks[task.nextTask].prevTask = list.task.prevTask;
-        list.tasks[list.task.prevTask].nextTask = list.task.nextTask;
-        delete list.\tasks[index];
+    function remove(taskList storage self, uint index){ //Remove task while maintaining sort order
+        self.tasks[self.tasks[index].nextTask].prevTask = self.tasks[index].prevTask;
+        self.tasks[self.tasks[index].prevTask].nextTask = self.tasks[index].nextTask;
+        delete self.tasks[index];
     }                                                                                   // TODO: Create linked list for tasks
     
     /*function add(Task[] tasks, Task newTask){                                         // OLD array based list structure
@@ -63,23 +62,23 @@ library Tasks {
         }
     }*/
     
-    function add(Task[] tasks, Task newTask uint last){
+    function add(taskList storage self, Task storage newTask){
         uint index; 
-        for(uint j=0, j < tasks.length, j++){ //Insert task into array
-            if(tasks[j].taskID == 0){
-                tasks[j] = newTask;
+        for(uint j=0; j < self.tasks.length; j++){ //Insert task into array
+            if(self.tasks[j].taskID == 0){
+                self.tasks[j] = newTask;
                 index = j;
             }
-            else if(i==tasks.length-1){
-                tasks.push(newTask);
+            else if(i==self.tasks.length-1){
+                self.tasks.push(newTask);
             }
         }
-        uint i = last;
-        while(tasks[i].startTime+tasks[i].duration > newTask.startTime + newTask.duration){
-            i=tasks[i].prevTask;
+        uint i = self.last;
+        while(self.tasks[i].startTime+self.tasks[i].duration > newTask.startTime + newTask.duration){
+            i=self.tasks[i].prevTask;
         }
-        tasks[tasks[i].nextTask].prevTask = index;
-        tasks[i].nextTask = index;
+        self.tasks[self.tasks[i].nextTask].prevTask = index;
+        self.tasks[i].nextTask = index;
         
     }
     
@@ -97,14 +96,21 @@ library Tasks {
     }
     */ 
     
-    function clean(Task[] tasks, uint first){
+    function clean(taskList storage self) returns (uint){
         uint penalty;
-        uint i = first;
-        while (tasks[i].startTime+tasks[i].time< block.timestamp){
-            penalty+=tasks[i].penalty;
-            remove(tasks, i);
+        uint i = self.first;
+        while (self.tasks[i].startTime+self.tasks[i].duration< block.timestamp){
+            penalty+=self.tasks[i].penalty;
+            remove(self, i);
         }
-        return penalty 
+        return penalty; 
+    }
+    
+    function findID(taskList storage self, uint ID) returns (uint){
+        for(uint i; i < self.tasks.length; i++){
+            if(self.tasks[i].taskID == ID) return i;
+        }
+        throw;
     }
     
 
