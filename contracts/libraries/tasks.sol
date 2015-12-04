@@ -19,6 +19,12 @@ library Tasks {
         uint prevTask;
     }
 
+    struct taskList{  //TODO: fix all the things
+        uint first;
+        uint last;
+        Tasks.Task[] tasks; //Sorted in order of due date
+    }
+    
     function validate(Task task, bytes validationData) returns (bool){
         if(block.timestamp > task.startTime && (block.timestamp < task.endTime){
             return  Validator(task.validator).validate(task.taskID, validationData);
@@ -26,18 +32,21 @@ library Tasks {
         return false;
     }
     
-    function complete(Task task, bytes validationData) returns (uint reward){ //validate, re-add, and return reward amount
+    function complete(Task[] tasks, uint index, bytes validationData) returns (uint reward){ //validate, re-add, and return reward amount
+        uint reward;
+        uint penalty = clean(tasks);
         if(validate(task, validationData)){
-            
+            reward += tasks[index].reward;
+            remove(tasks, index);
         }
     }
 
     
-    function remove(Task[] tasks, uint index){ //Remove task while maintaining sort order
-        Task task = tasks[index];
-        tasks[task.nextTask].prevTask = task.prevTask;
-        tasks[task.prevTask].nextTask = task.nextTask;
-        delete tasks[index];
+    function remove(taskList list, uint index){ //Remove task while maintaining sort order
+        Task task = list.tasks[index];
+        list.tasks[task.nextTask].prevTask = list.task.prevTask;
+        list.tasks[list.task.prevTask].nextTask = list.task.nextTask;
+        delete list.\tasks[index];
     }                                                                                   // TODO: Create linked list for tasks
     
     /*function add(Task[] tasks, Task newTask){                                         // OLD array based list structure
@@ -54,7 +63,7 @@ library Tasks {
         }
     }*/
     
-    function add(Task[] tasks, Task newTask){
+    function add(Task[] tasks, Task newTask uint last){
         uint index; 
         for(uint j=0, j < tasks.length, j++){ //Insert task into array
             if(tasks[j].taskID == 0){
@@ -65,7 +74,7 @@ library Tasks {
                 tasks.push(newTask);
             }
         }
-        uint i;
+        uint i = last;
         while(tasks[i].startTime+tasks[i].duration > newTask.startTime + newTask.duration){
             i=tasks[i].prevTask;
         }
@@ -73,8 +82,6 @@ library Tasks {
         tasks[i].nextTask = index;
         
     }
-    
-    function iterate(Task[] tasks){} // TODO: Implement general iteration
     
     
 // TODO: Implement clean using new linked list
@@ -90,7 +97,15 @@ library Tasks {
     }
     */ 
     
-    
+    function clean(Task[] tasks, uint first){
+        uint penalty;
+        uint i = first;
+        while (tasks[i].startTime+tasks[i].time< block.timestamp){
+            penalty+=tasks[i].penalty;
+            remove(tasks, i);
+        }
+        return penalty 
+    }
     
 
 }
