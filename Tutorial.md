@@ -36,4 +36,5 @@ foo.bar(2,{from: web3.eth.accounts[0] ,to:"0xabcd...", value:web3.toWei(123,"eth
 I will continue this tomorrow, once I have all the public APIs in place. Also need to describe Events
 
 https://github.com/ethereum/wiki/wiki/JavaScript-API
+
 https://github.com/ethereum/web3.js/tree/master/example
