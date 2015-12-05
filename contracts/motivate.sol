@@ -9,7 +9,6 @@ contract Motivate {
         
     }
     
-    function 
     
     
 }

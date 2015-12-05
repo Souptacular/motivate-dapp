@@ -9,7 +9,7 @@ contract goalReg {
     }
     
     function resolveAddress (address addr) public returns (string){
-        return names[name];
+        return names[addr];
     }
     
     function getGoals (address user) public returns (address[128]){
@@ -17,7 +17,7 @@ contract goalReg {
     }
     
     function addGoal() public returns (bool){
-        if(msg.sender != motivate || ){
+        if(msg.sender != motivate ){
             throw;
         }
         

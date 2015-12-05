@@ -18,7 +18,7 @@ contract wordCounter {
 
     }
     
-    function validate(uint ID, bytes data) public constant{
+    function validate(uint ID, bytes data) public constant returns (bool){
         return verifiedTasks[ID];
     }
     
