@@ -14,7 +14,7 @@ library Tasks {
     struct Task { //TODO: Define tasks
         address user;
         uint taskID;
-        byte[] ipfsData; //note: ipfs uses arbitrary-length addresses
+        bytes ipfsData; //note: ipfs uses arbitrary-length addresses
         uint startTime;
         uint duration;
         address validator;
@@ -60,6 +60,28 @@ library Tasks {
             self.count ++;
         }
     }
+    
+    function add(taskList storage self, Task storage newTask){
+        uint index; 
+        for(uint j=0; j < self.tasks.length; j++){ //Insert task into array
+            if(self.tasks[j].taskID == 0){
+                self.tasks[j] = newTask;
+                index = j;
+            }
+            else if(i==self.tasks.length-1){
+                self.tasks.push(newTask);
+            }
+        }
+        uint i = self.last;
+        while(self.tasks[i].startTime+self.tasks[i].duration > newTask.startTime + newTask.duration){
+            i=self.tasks[i].prev;
+        }
+        self.tasks[self.tasks[i].next].prev = index;
+        self.tasks[i].next = index;
+        self.count++;
+        
+    }
+    
     /// Removes the element identified by the iterator
     /// `_index` from the list `self`.
     function remove(taskList storage self, uint80 _index) {
@@ -102,4 +124,6 @@ library Tasks {
     function iterate_prev(taskList storage self, uint80 _index) returns (uint80) { return self.tasks[_index - 1].prev; }
     function iterate_next(taskList storage self, uint80 _index) returns (uint80) { return self.tasks[_index - 1].next; }
     function iterate_getID(taskList storage self, uint80 _index) returns (uint) { return self.tasks[_index - 1].taskID; }
+    
+    
 }
