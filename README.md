@@ -23,6 +23,9 @@ Example: Nick has a goal to write a novel. He needs to write 500 words a day for
 
 [Gitter Channel](https://gitter.im/Souptacular/motivate-dapp)
 
+## Design
+![](https://cloud.githubusercontent.com/assets/3460120/11605883/1253e32c-9ad1-11e5-8cf1-636c999a18b5.png)
+
 ## Example
 ![](https://cloud.githubusercontent.com/assets/3460120/11315432/3f5083fa-8fb7-11e5-885c-4e21433967e3.png)
 
