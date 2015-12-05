@@ -62,8 +62,8 @@ library Tasks {
     }
     
     function add(taskList storage self, Task storage newTask){
-        uint index; 
-        for(uint j=0; j < self.tasks.length; j++){ //Insert task into array
+        uint80 index; 
+        for(uint80 j; j < self.tasks.length; j++){ //Insert task into array
             if(self.tasks[j].taskID == 0){
                 self.tasks[j] = newTask;
                 index = j;
@@ -72,7 +72,7 @@ library Tasks {
                 self.tasks.push(newTask);
             }
         }
-        uint i = self.last;
+        uint80 i = self.last;
         while(self.tasks[i].startTime+self.tasks[i].duration > newTask.startTime + newTask.duration){
             i=self.tasks[i].prev;
         }
@@ -109,14 +109,14 @@ library Tasks {
         return it;
     }
     
-    function clean(taskList storage self) returns (uint){
+    function clean(taskList storage self) returns (uint){ //cleans list and tallies penalties
         uint penalty;
         uint80 i = self.first;
         while (self.tasks[i].startTime+self.tasks[i].duration< block.timestamp){
             penalty+=self.tasks[i].penalty;
             remove(self, i);
         }
-        return penalty; 
+        return penalty;
     }
     
     function iterate_start(taskList storage self) returns (uint80) { return self.first; }
