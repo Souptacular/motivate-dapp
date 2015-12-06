@@ -3,7 +3,6 @@
 angular.module('GoalCreator', ['ngRoute'])
 
 .controller('goalCtrl', function($scope){
-	$scope.testMsg = "Goal Creator";
   $scope.goal = {}; //Container for goal setup data
   $scope.page = {}; //Containerfor page data 
 
@@ -70,15 +69,15 @@ angular.module('GoalCreator', ['ngRoute'])
 
     $routeProvider
       .when('/setup', {
-        templateUrl: 'partials/goal-setup.html',
+        templateUrl: '/app/partials/goal-setup.html',
         controller: 'goalCtrl'
       })
       .when('/accountability', {
-        templateUrl: 'partials/goal-accountability.html',
+        templateUrl: '/app/partials/goal-accountability.html',
         controller: 'goalCtrl'
       })
       .when('/review', {
-        templateUrl: 'partials/goal-review.html',
+        templateUrl: '/app/partials/goal-review.html',
         controller: 'goalCtrl'
       })
       .otherwise({
