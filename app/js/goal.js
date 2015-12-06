@@ -48,6 +48,7 @@ angular.module('GoalCreator', ['ngRoute'])
             startDate: null,
             endDate: null,
             count: null,
+            validatorUrl: 'validator/word-count.html'
           }
         ],
         incentives: [ //list of incentives
@@ -85,21 +86,5 @@ angular.module('GoalCreator', ['ngRoute'])
       });
 
   })
-
-;
-
-angular.module('GoalManager', ['ngRoute'])
-
-.controller('manageCtrl', function($scope){
-	$scope.testMsg = "Manage My Goals";
-})
-
-;
-
-angular.module('GoalBoard', ['ngRoute'])
-
-.controller('boardCtrl', function($scope){
-	$scope.testMsg = "Goal Board";
-})
 
 ;
