@@ -48,7 +48,7 @@ angular.module('GoalCreator', ['ngRoute'])
             startDate: null,
             endDate: null,
             count: null,
-            validatorUrl: 'validator/word-count.html'
+            validatorUrl: 'validators/word-count.html'
           }
         ],
         incentives: [ //list of incentives
