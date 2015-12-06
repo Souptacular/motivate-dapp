@@ -5,6 +5,17 @@ angular.module('GoalManager', ['ngRoute'])
 .controller('manageCtrl', function($scope){
 })
 
+
+.filter('wordCounter', function () {
+        return function (value) {
+            if (value && typeof value === 'string') {
+                return value.trim().split(/\s+/).length;
+            } else {
+                return 0;
+            }
+        };
+})
+
 .config(function($routeProvider) {
 
     $routeProvider
