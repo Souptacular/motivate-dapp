@@ -1,6 +1,23 @@
 <div class="container-fluid">
   <div class="row">
-    setup
+    <div class="input-group">
+		<span class="input-group-addon">Name</span>
+		 <input type="text" class="form-control" placeholder="name of goal" ng-model="goal.name">
+	</div>    
+	<div class="input-group">
+		<span class="input-group-addon">Description</span>
+		 <input type="text" class="form-control" placeholder="goal description" ng-model="goal.description">
+	</div>
+	<div class="input-group">
+		<span class="input-group-addon">Contact</span>
+		 <input type="text" class="form-control" placeholder="contact info" ng-model="goal.contact">
+	</div>	
+
+	<span>Preset</span>
+	<select class="form-control" placeholder="contact info" ng-model="goal.preset">
+		<option>Writing</option>
+	</select>
+
   </div>
-  <a href="goal.html#/accountability">Next</a>  
+  <a class="btn btn-primary pull-right" href="goal.html#/accountability">Next</a>  
 </div>
