@@ -62,7 +62,7 @@
 		  	<div class="well" ng-show="goal.review.incentive.type === 'ethereum'">
 				<div>
 					<span>Deposit Amount:</span>  
-					<span>{{goal.review.deposit || 'No Value'}}</span>  	
+					<span>{{goal.review.incentive.deposit || 'No Value'}}</span>  	
 				</div>		
 		  	</div>		  	
 		  	<div class="well" ng-show="!goal.review.incentive.type">
@@ -71,7 +71,6 @@
 		</div>	
   	</div>  	
   </div>
-  {{goal.review}}
   <a class="btn btn-primary pull-left" href="goal.html#/setup">&larr; Setup</a>  
   <a class="btn btn-primary pull-right" ng-click="goal.submitGoal()">Submit &rarr;</a>  
 </div>

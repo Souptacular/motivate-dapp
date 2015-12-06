@@ -2,6 +2,6 @@
 
 angular.module('GoalBoard', ['ngRoute'])
 
-.controller('boardCtrl', function($scope){
+.controller('boardCtrl', function($scope){})
 
 ;
