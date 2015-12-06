@@ -22,7 +22,7 @@ angular.module('GoalManager', ['ngRoute'])
         controller: 'manageCtrl'
       })
       .otherwise({
-        redirectTo: '/manage'
+        redirectTo: '/validate/word-count' //default to word-count
       });
 
   })

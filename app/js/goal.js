@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('GoalCreator', ['ngRoute'])
+angular.module('GoalCreator', ['ngRoute', 'motivateDapp'])
 
 .controller('goalCtrl', function($scope, goalSubmissionService, goalTypeService){
   $scope.goal = {}; //Container for goal setup data
@@ -16,6 +16,7 @@ angular.module('GoalCreator', ['ngRoute'])
 
   $scope.updateDataFactory = function(stage){
     goalSubmissionService().set(stage, $scope.goal.data);
+    goalSubmissionService().send();
   }
 
 })
@@ -62,7 +63,7 @@ angular.module('GoalCreator', ['ngRoute'])
 
 })
 
-.factory('goalSubmissionService', function(){ 
+.factory('goalSubmissionService', function(EthereumQueryFactory){ 
 
   var service = {
     get: function() {
@@ -82,6 +83,10 @@ angular.module('GoalCreator', ['ngRoute'])
         this.data.validation = data.validation;
       }
 
+    },
+    send: function(){
+      var isConnected = EthereumQueryFactory.isConnected;
+      console.log('connected: ' + isConnected);
     },
     data: {
       name: null,

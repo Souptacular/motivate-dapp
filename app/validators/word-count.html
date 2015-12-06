@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <h1>Validate Words</h1>
-    <input type="textarea" name="word-validator" ng-model="wordsEntered"/>  
-    <span>Word Count</span>{{wordsEntered.length}}
+	<textarea class="form-control" ng-model="wordsEntered" rows="5"></textarea>
+    <span>Word Count: </span>{{wordsEntered.length || 0}}
     <a class="btn btn-primary pull-right" ng-click="validate('word-count')">Submit</a>  
 </div>
