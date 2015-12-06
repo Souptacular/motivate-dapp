@@ -1,6 +1,76 @@
-<div class="container-fluid">
-  <div class="row">
-    review
+<div class="container-fluid" id="goal-review">
+  <div class="row">  	
+  	<div class="col-sm-6">
+	  	<div class="panel">
+	  		<div class="well">
+				<div>
+					<span>Name:</span>
+					<span>{{goal.review.name || 'No Value'}}</span>
+				</div>
+
+				<div>
+					<span>Description:</span>
+					<span>{{goal.review.description || 'No Value'}}</span>
+				</div>
+
+				<div>
+					<span>Contact Info:</span>
+					<span>{{goal.review.contact || 'No Value'}}</span>
+				</div>
+
+				<div>
+					<span>Ethereum Account:</span>
+					<span>{{goal.review.ethereumAddress || 'No Value'}}</span>
+				</div>
+
+	  		</div>
+	  	</div>
+  	</div>
+  	<div class="col-sm-6">
+	  	<div class="panel">
+	  		<div class="well">
+	  			<div>
+			  		<span>Select Goal Type:</span>
+			  		<span>{{goal.review.type || 'No Value'}}</span>
+	  			</div>
+		  		<div>
+			  		<span>Validation:</span>
+			  		<span>{{goal.review.validation.type || 'No Value'}}</span>
+		  		</div>	  		
+		  		<div>
+			  		<span>Incentive:</span>
+			  		<span>{{goal.review.incentive.type || 'No Value'}}</span>
+		  		</div>	  			
+	  		</div>
+		  	<div class="well" ng-show="goal.review.validation.type === 'word count'">
+		  		<div>
+					<span>Start Date:</span>  
+					<span>{{goal.review.startDate || 'No Value'}}</span>  	
+				</div>		  		
+				<div>
+					<span>End Date:</span>  
+					<span>{{goal.review.endDate || 'No Value'}}</span>  
+				</div>				
+				<div>
+					<span>Word Count Per Day:</span>  
+					<span>{{goal.review.count || 'No Value'}}</span>  
+				</div>		
+		  	</div>
+		  	<div class="well" ng-show="!goal.review.validation.type">
+				<h4>Please select a validation type</h4>	
+		  	</div>		  			  	
+		  	<div class="well" ng-show="goal.review.incentive.type === 'ethereum'">
+				<div>
+					<span>Deposit Amount:</span>  
+					<span>{{goal.review.deposit || 'No Value'}}</span>  	
+				</div>		
+		  	</div>		  	
+		  	<div class="well" ng-show="!goal.review.incentive.type">
+				<h4>Please select an incentive type</h4>	
+		  	</div>
+		</div>	
+  	</div>  	
   </div>
-  <a href="goal.html#/setup">Done</a>  
+  <a class="btn btn-primary pull-left" href="goal.html#/setup">&larr; Setup</a>  
+  <a class="btn btn-primary pull-right" ng-click="goal.submitGoal()">Submit &rarr;</a>  
 </div>

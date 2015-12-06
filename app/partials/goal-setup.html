@@ -1,23 +1,61 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="input-group">
-		<span class="input-group-addon">Name</span>
-		 <input type="text" class="form-control" placeholder="name of goal" ng-model="goal.name">
-	</div>    
-	<div class="input-group">
-		<span class="input-group-addon">Description</span>
-		 <input type="text" class="form-control" placeholder="goal description" ng-model="goal.description">
-	</div>
-	<div class="input-group">
-		<span class="input-group-addon">Contact</span>
-		 <input type="text" class="form-control" placeholder="contact info" ng-model="goal.contact">
-	</div>	
+<div class="container-fluid" id="goal-setup">
+  <div class="row">  	
+  	<div class="col-sm-6">
+	  	<div class="panel">
 
-	<span>Preset</span>
-	<select class="form-control" placeholder="contact info" ng-model="goal.preset">
-		<option>Writing</option>
-	</select>
-
+	  		<div class="well">
+		  		<span>Select Goal Type</span>
+		  		<select ng-options="item as item.type for item in goal.list track by item.type" ng-model="goal.type" ng-change="goal.data.type = goal.type.type"></select>
+	  		</div>
+	  		<div class="well" ng-show="goal.type">
+		  		<div>
+			  		<span>Select Validation</span>
+			  		<select ng-options="item as item.type for item in goal.type.validations track by item.type " ng-model="goal.data.validation"></select>
+		  		</div>	  		
+		  		<div>
+			  		<span>Select Incentive</span>
+			  		<select ng-options="item as item.type for item in goal.type.incentives track by item.type" ng-model="goal.data.incentive"></select>
+		  		</div>
+	  		</div>
+	  	</div>
+  	</div>
+  	<div class="col-sm-6">
+	  	<div class="panel">
+		  	<div class="well" ng-show="goal.data.validation.type === 'word count'">
+		  		<div>
+					<span>Start Date</span>  
+					<div class="input-group ">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+						 <input type="date" ng-model="goal.data.startDate">
+					</div>	
+				</div>		  		
+				<div>
+					<span>End Date</span>  
+					<div class="input-group ">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+						 <input type="date" ng-model="goal.data.endDate">
+					</div>	
+				</div>				
+				<div>
+					<span>Word Count Per Day</span>  
+					<div class="input-group ">
+						<span class="input-group-addon">#</span>
+						 <input type="number" ng-model="goal.data.count">
+					</div>	
+				</div>		
+		  	</div>		  	
+		  	<div class="well" ng-show="goal.data.incentive.type === 'ethereum'">
+				<div>
+					<span>Deposit Amount</span>  
+					<div class="input-group ">
+						<span class="input-group-addon">#</span>
+						 <input type="number" ng-model="goal.data.ethereumAddress">
+					</div>	
+				</div>		
+		  	</div>
+		</div>	
+  	</div>  	
   </div>
-  <a class="btn btn-primary pull-right" href="goal.html#/accountability">Next</a>  
+  <a class="btn btn-primary pull-left" href="goal.html#/start">&larr; Start</a>  
+  <a class="btn btn-primary pull-right" href="goal.html#/review" ng-click="updateDataFactory('setup')">Save and Review &rarr;</a>  
 </div>
